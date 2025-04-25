@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './component/Header';
+import Body from './component/Body';
+import Footer from './component/Footer';
 
 function App() {
+  let list = [
+    {subId : 1, subName : "java"},
+    {subId : 2, subName : "html"},
+    {subId : 3, subName : "oracle"},
+    {subId : 4, subName : "react"}
+  ];
+  let numList = [1,3,5,2,4];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       <Header title="헤더다 !!" contents="과목을 보여줍니다." fnHeader={(text)=>{
+          alert(text);
+       }}></Header>
+       <Header title="프로그래밍 재밌다 !" fnHeader={(text)=>{}}></Header>
+       <Body list={list} fnBody={(subName)=>{
+          alert(subName);
+       }}></Body>
+       <Footer list={numList} fnFooter={()=>{
+        // numList가 목록으로 출력
+        // 목록 클릭 시 해당 숫자 alert창에 띄우기
+       }}></Footer>
     </div>
   );
 }
