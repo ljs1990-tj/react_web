@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Product from "./component/Product";
+import Product from "../component/Product";
 
 function ProductMain(){
     let [isFlg, setFlg] = useState(true);
