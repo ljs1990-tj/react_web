@@ -4,6 +4,7 @@ import Menu from './Menu';
 import App from './App';
 import State from './State';
 import Effect from './UseEffect1';
+import Review from './Review'
 import ProductMain from './ProductMain'
 
 function AppRouter() {
@@ -16,6 +17,7 @@ function AppRouter() {
         <Route path="/state" element={<State />} />
         <Route path="/effect" element={<Effect />} />
         <Route path="/product" element={<ProductMain />} />
+        <Route path="/review" element={<Review />} />
       </Routes>
     </BrowserRouter>
   );
