@@ -21,6 +21,8 @@ function Menu() {
         <li><Link to="/product">ProductMain.js</Link></li>
         <li><Link to="/review">Review.js</Link></li>
         <li><Link to="/ref">Ref.js</Link></li>
+        <li><Link to="/context">Context.js</Link></li>
+        <li><Link to="/main">Context22222222.js</Link></li>
       </ul>
     </nav>
   );

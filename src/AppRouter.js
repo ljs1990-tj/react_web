@@ -7,6 +7,8 @@ import Effect from './menu/UseEffect1';
 import Review from './menu/Review'
 import ProductMain from './menu/ProductMain'
 import Ref from './menu/Ref'
+import ContextEx from './menu/ContextEx'
+import Main from './menu/Main';
 
 function AppRouter() {
   return (
@@ -20,6 +22,8 @@ function AppRouter() {
         <Route path="/product" element={<ProductMain />} />
         <Route path="/review" element={<Review />} />
         <Route path="/ref" element={<Ref />} />
+        <Route path="/context" element={<ContextEx />} />
+        <Route path="/main" element={<Main />} />
       </Routes>
     </BrowserRouter>
   );
