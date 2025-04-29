@@ -21,12 +21,14 @@ import Main from './menu/Main';
 import Login from './menu/Login';
 import { LoginOutlined, LoginRounded, Money } from '@mui/icons-material';
 import ReducerEx from './menu/ReducerEx';
+import ReducerEx2 from './menu/ReducerEx2';
 
 const drawerWidth = 240;
 
 const menuItems = [
   { text: 'Login.js', icon: <LoginOutlined />, path: '/login' },
   { text: 'Reducer.js', icon: <Money />, path: '/reducer' },
+  { text: 'Reducer2.js', icon: <Money />, path: '/reducer2' },
   { text: 'App.js', icon: <AppsIcon />, path: '/app' },
   { text: 'State.js', icon: <ArticleIcon />, path: '/state' },
   { text: 'Effect.js', icon: <SendIcon />, path: '/effect' },
@@ -95,6 +97,7 @@ function AppRouter() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/reducer" element={<ReducerEx />} />
+          <Route path="/reducer2" element={<ReducerEx2 />} />
           <Route path="/app" element={<App />} />
           <Route path="/state" element={<State />} />
           <Route path="/effect" element={<Effect />} />
