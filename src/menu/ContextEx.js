@@ -3,20 +3,23 @@ import HeaderContext from "../component/HeaderContext"
 import { MyContext } from "../context/MyContext"
 
 function Child1(){
+    let {isDark} = useContext(MyContext);
     return (
         <div>
-            자식 컴포넌트 111
+            <span style={{color : isDark ? "black" : "red"}}>자식 컴포넌트 111</span>
             <Child2></Child2>
         </div>
     )
 }
 
 function Child2(){
+    let {isDark, setDark} = useContext(MyContext);
     return (
         <div>
             자식 컴포넌트 222
-
-            <button>검은색/빨간색</button> 
+            <button onClick={()=>{
+                setDark(!isDark);
+            }}>검은색/빨간색</button> 
             {/* 위 버튼 클릭 시 isDark값이 true<=>false 왔다갔다 */}
             {/* Child1의 텍스트가 isDark가 true면 검은색 아니면 빨간색 */}
             <Child3></Child3>

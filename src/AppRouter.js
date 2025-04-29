@@ -19,12 +19,14 @@ import Ref from './menu/Ref';
 import ContextEx from './menu/ContextEx';
 import Main from './menu/Main';
 import Login from './menu/Login';
-import { LoginOutlined, LoginRounded } from '@mui/icons-material';
+import { LoginOutlined, LoginRounded, Money } from '@mui/icons-material';
+import ReducerEx from './menu/ReducerEx';
 
 const drawerWidth = 240;
 
 const menuItems = [
   { text: 'Login.js', icon: <LoginOutlined />, path: '/login' },
+  { text: 'Reducer.js', icon: <Money />, path: '/reducer' },
   { text: 'App.js', icon: <AppsIcon />, path: '/app' },
   { text: 'State.js', icon: <ArticleIcon />, path: '/state' },
   { text: 'Effect.js', icon: <SendIcon />, path: '/effect' },
@@ -92,6 +94,7 @@ function AppRouter() {
         <Toolbar />
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/reducer" element={<ReducerEx />} />
           <Route path="/app" element={<App />} />
           <Route path="/state" element={<State />} />
           <Route path="/effect" element={<Effect />} />
