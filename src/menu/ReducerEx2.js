@@ -61,6 +61,17 @@ function ReducerEx2(){
                 }}>해지</button>
                 {/* 해지는 남은 금액이 0원일때만 */}
             </div>
+            <hr></hr>
+            <div>
+                {state.map((item)=>{
+                    return (
+                    <li>
+                        {item.type == "deposit" ? "입금" : item.type == "withdraw" ? "출금" : "개설"} [ 
+                        요청 금액 : {item.req}, 현재 잔액 : {item.money}, 현재 날짜 : {item.date.toLocaleDateString()} ]
+                    </li>
+                    )
+                })}
+            </div>
         </>
     )
 }
