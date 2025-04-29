@@ -19,14 +19,18 @@ import Ref from './menu/Ref';
 import ContextEx from './menu/ContextEx';
 import Main from './menu/Main';
 import Login from './menu/Login';
-import { LoginOutlined, LoginRounded, Money } from '@mui/icons-material';
+import { Feed, LoginOutlined, LoginRounded, Money } from '@mui/icons-material';
 import ReducerEx from './menu/ReducerEx';
 import ReducerEx2 from './menu/ReducerEx2';
+import FeedList from './menu/FeedList';
+import FeedAdd from './menu/FeedAdd';
 
 const drawerWidth = 240;
 
 const menuItems = [
   { text: 'Login.js', icon: <LoginOutlined />, path: '/login' },
+  { text: 'Feed-Add.js', icon: <Feed />, path: '/feed-add' },
+  { text: 'Feed.js', icon: <Feed />, path: '/feedList' },
   { text: 'Reducer.js', icon: <Money />, path: '/reducer' },
   { text: 'Reducer2.js', icon: <Money />, path: '/reducer2' },
   { text: 'App.js', icon: <AppsIcon />, path: '/app' },
@@ -96,6 +100,7 @@ function AppRouter() {
         <Toolbar />
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/feedList" element={<FeedList />} />
           <Route path="/reducer" element={<ReducerEx />} />
           <Route path="/reducer2" element={<ReducerEx2 />} />
           <Route path="/app" element={<App />} />
@@ -106,6 +111,7 @@ function AppRouter() {
           <Route path="/ref" element={<Ref />} />
           <Route path="/context" element={<ContextEx />} />
           <Route path="/main" element={<Main />} />
+          <Route path="/feed-add" element={<FeedAdd />} />
         </Routes>
       </Box>
     </Box>
