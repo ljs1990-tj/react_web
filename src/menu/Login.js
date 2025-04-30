@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Container,
   Box,
@@ -15,18 +16,34 @@ import {
 } from '@mui/material';
 
 function Login(){
-  const [email, setEmail] = useState('');
+  const [userId, setUserId] = useState('');
   const [password, setPassword] = useState('');
   const [dialogOpen, setDialogOpen] = useState(false);
   const [dialogMessage, setDialogMessage] = useState('');
-
+  const navigate = useNavigate();
   const handleLogin = () => {
-    if (email === 'test' && password === '1234') {
-      setDialogMessage('로그인 성공');
-    } else {
-      setDialogMessage('로그인 실패');
-    }
-    setDialogOpen(true);
+
+    fetch("http://localhost:3005/login",{
+      method : "POST",
+      headers : {
+        "Content-type" : "application/json"
+      },
+      body : JSON.stringify({userId, pwd : password})
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      if (data.success) {
+        setDialogMessage(data.message);
+        localStorage.setItem("token", data.token);
+        navigate("/feedList");
+      } else {
+        setDialogMessage(data.message);
+      }
+      setDialogOpen(true);
+    })
+
+    
   };
 
   const handleDialogClose = () => {
@@ -47,8 +64,8 @@ function Login(){
                 type="text"
                 fullWidth
                 required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={userId}
+                onChange={(e) => setUserId(e.target.value)}
               />
               <TextField
                 label="비밀번호"
