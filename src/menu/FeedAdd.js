@@ -5,14 +5,15 @@ import { useNavigate, useSearchParams  } from "react-router-dom";
 // 1. 업로드 버튼 검포넌트 생성
 function UploadButton(props) {
   const imgSelect = (event) => {
-    const file = event.target.files[0];
-    props.setFile(file);
+    const files = event.target.files;
+    props.setFile(files);
   };
 
   return (
     <div>
       <label>
         <input
+          multiple
           accept="image/*"
           type="file"
           style={{ display: "none" }}
@@ -32,14 +33,16 @@ function FeedAdd() {
   const [content, setContent] = useState("");
   const [searchParams] = useSearchParams();
   // 2. 선택한 파일 저장할 공간 할당
-  const [file, setFile] = useState();
+  const [files, setFile] = useState();
   const id = searchParams.get("id");
   const navigate = useNavigate();
 
   // 5. pk값 받아서 업로드 api 호출
   const fnUploadFile = (feedId)=>{
     const formData = new FormData();
-    formData.append("file", file); 
+    for(let i=0; i<files.length; i++){
+      formData.append("file", files[i]); 
+    } 
     formData.append("feedId", feedId);
     fetch("http://localhost:3005/feed/upload", {
       method: "POST",
@@ -82,7 +85,7 @@ function FeedAdd() {
         console.log(data);
         // 4. 피드 등록 후 선택한 파일이 있으면 insert할때의 pk값을 담아서
         // 파일 업로드 함수 호출
-        if(file) {
+        if(files) {
           fnUploadFile(data.result.insertId);
         } else {
           navigate("/feedList"); // 원하는 경로
