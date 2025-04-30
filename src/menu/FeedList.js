@@ -17,7 +17,22 @@ function FeedList() {
       }
         fetch(url)
         .then(res => res.json())
-        .then(data => setFeeds(data.list));
+        .then(data => {
+          
+          let map = new Map();
+          data.imgList.forEach(item => {
+            if(!map.has(item.id)){
+              map.set(item.id, []);
+            }
+            map.get(item.id).push(item);
+          });
+
+          data.list = data.list.map((item)=>{
+            return {...item, list : map.get(item.id) || []}
+          })
+          console.log(data.list);
+          setFeeds(data.list);
+        })
     }
 
   const fnRemove = (id)=>{
@@ -48,7 +63,10 @@ function FeedList() {
       <Divider sx={{ mb: 2 }} />
       {feeds.map(feed => (
         <Card key={feed.id} sx={{ mb: 2 }}>
-          <CardContent>
+          <CardContent>    
+            {feed.list.map((item)=>{
+              return <img key={item.imgNo} style={{width : "50px", height : "50px"}} src={"http://localhost:3005/" + item.imgPath + item.imgName}></img>
+            })}   
             <Typography variant="h6">{feed.userId}</Typography>
             <Typography variant="body1">{feed.content}</Typography>
             <Typography variant="caption" color="text.secondary">
